@@ -9,42 +9,31 @@
   <a href="./README.es.md"><img src="https://img.shields.io/badge/README-Español-c92a2a?style=for-the-badge" alt="Español"></a>
 </p>
 
-<p align="center"><em>🔄 Auto-resurrección y evolución post-fallo.</em></p>
-
----
-
 ## Overview
-Sistema de auto-recuperación que detecta fallos en la ejecución de skills, analiza causas raíz mediante meta-learning ligero y ejecuta retries con estrategia mejorada.
+Self-recovery engine with checkpoint restore and lightweight meta-learning retries.
 
-## Architecture of understanding
-```mermaid
-flowchart LR
-  A[Input goal] --> B[Scope check]
-  B --> C[Plan minimal steps]
-  C --> D[Execute safely]
-  D --> E[Verify outcomes]
-  E --> F[Report + next steps]
-```
+## Purpose
+Auto-resurrección y evolución: si el agente falla/crash/olvida contexto crítico, revive de backups locales + analiza logs de fallos para mutar su propio prompt base y skills (meta-learning ligero). Evita loops de muerte repetida en tareas largas.
 
 ## Installation
 ```bash
 git clone https://github.com/smouj/Phoenix-Reborn.git
 cd Phoenix-Reborn
-# read the contract
 cat SKILL.md
 ```
 
-## Quick usage
-```bash
-# Example placeholder command
-printf "running phoenix-reborn...\n"
+## Architecture (understanding)
+```mermaid
+flowchart LR
+  A[Input] --> B[Validate scope]
+  B --> C[Plan safe steps]
+  C --> D[Execute]
+  D --> E[Verify]
+  E --> F[Report]
 ```
 
-## Badges
-- Status: Initiating
-- Difficulty: Alta
+## Status
+Initiating
 
-## Roadmap
-- [ ] Implement core logic v0
-- [ ] Add integration tests
-- [ ] Publish stable tag v1.0.0
+## Difficulty
+Alta
