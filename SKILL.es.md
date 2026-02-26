@@ -1,58 +1,45 @@
 ---
-name: phoenix-reborn
-description: "🔄 Auto-resurrección y evolución post-fallo."
+name: Phoenix Reborn
+description: "🔄 Self-recovery engine with checkpoint restore and lightweight meta-learning retries."
+when: "When a user request matches phoenix-reborn capabilities or requires this domain-specific workflow."
+examples:
+  - "Run Phoenix Reborn for this task"
+  - "Apply Phoenix Reborn to solve this workflow"
 metadata:
-  {
-    "openclaw": {
-      "emoji": "🔄",
-      "version": "0.2.0",
-      "author": "smouj",
-      "lang_default": "en"
-    }
-  }
+  openclaw:
+    requires: ["fs_read", "fs_write", "shell_exec", "memory_search"]
+  safety_level: high
+  version: "1.0.0"
+  author: "smouj"
+  tags: ["phoenix-reborn", "automation", "openclaw-skill"]
 ---
 
 # 🔄 Phoenix Reborn
 
 ## Propósito
-Sistema de auto-recuperación que detecta fallos en la ejecución de skills, analiza causas raíz mediante meta-learning ligero y ejecuta retries con estrategia mejorada.
+Auto-resurrección y evolución: si el agente falla/crash/olvida contexto crítico, revive de backups locales + analiza logs de fallos para mutar su propio prompt base y skills (meta-learning ligero). Evita loops de muerte repetida en tareas largas.
 
-## Tags
-- security
-- reliability
-- automation
-- openclaw-skill
+## Cómo usar / Instrucciones núcleo
+1. Primero piensa en alcance, riesgo y coste.
+2. Luego valida inputs y dependencias mínimas.
+3. Ejecuta en pasos pequeños y reversibles.
+4. Verifica resultado con checks explícitos.
+5. Si hay error, falla seguro y reporta causa + próximo paso.
 
-## Contrato de ejecución
-1. Validar solicitud y restricciones.
-2. Generar plan mínimo seguro.
-3. Ejecutar en pasos reversibles.
-4. Verificar con checks explícitos.
-5. Resumir resultado + siguientes acciones.
+## Security & Safety Guidelines
+Nunca ejecutes código sospechoso sin sandbox. Reporta riesgos al usuario. No envíes datos sensibles fuera del entorno local.
 
-## Inputs esperados
-- Objetivo
-- Restricciones (tiempo/coste/privacidad)
-- Archivos/URLs opcionales
+## Herramientas requeridas
+- fs_read
+- fs_write
+- shell_exec
+- memory_search
 
-## Outputs
-- Plan
-- Acciones ejecutadas
-- Verificación
-- Notas de rollback
+## Flujos de ejemplo
+- Entrada -> validación -> plan -> ejecución -> verificación -> reporte.
+- Reintento controlado con rollback si falla.
 
-## Guardrails
-- Nunca exponer secretos.
-- Sin acciones destructivas sin confirmación explícita.
-- Fallar de forma segura con diagnóstico accionable.
-
-## Comandos
-```bash
-printf "phoenix-reborn: validar -> ejecutar -> verificar\n"
-```
-
-## Checklist de test
-- [ ] Happy path
-- [ ] Manejo de errores
-- [ ] Idempotencia
-- [ ] Guardrails respetados
+## Casos límite y manejo de errores
+- Input incompleto: pedir datos mínimos.
+- Dependencia ausente: degradar en modo seguro.
+- Error persistente: detener, registrar y escalar.
