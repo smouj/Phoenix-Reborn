@@ -1,59 +1,45 @@
 ---
-name: phoenix-reborn
-description: "🔄 Auto-resurrección y evolución post-fallo."
+name: Phoenix Reborn
+description: "🔄 Self-recovery engine with checkpoint restore and lightweight meta-learning retries."
+when: "When a user request matches phoenix-reborn capabilities or requires this domain-specific workflow."
+examples:
+  - "Run Phoenix Reborn for this task"
+  - "Apply Phoenix Reborn to solve this workflow"
 metadata:
-  {
-    "openclaw": {
-      "emoji": "🔄",
-      "version": "0.2.0",
-      "author": "smouj",
-      "lang_default": "en"
-    }
-  }
+  openclaw:
+    requires: ["fs_read", "fs_write", "shell_exec", "memory_search"]
+  safety_level: high
+  version: "1.0.0"
+  author: "smouj"
+  tags: ["phoenix-reborn", "automation", "openclaw-skill"]
 ---
 
 # 🔄 Phoenix Reborn
 
 ## Purpose
-Sistema de auto-recuperación que detecta fallos en la ejecución de skills, analiza causas raíz mediante meta-learning ligero y ejecuta retries con estrategia mejorada.
+Auto-resurrección y evolución: si el agente falla/crash/olvida contexto crítico, revive de backups locales + analiza logs de fallos para mutar su propio prompt base y skills (meta-learning ligero). Evita loops de muerte repetida en tareas largas.
 
-## Tags
-- security
-- reliability
-- automation
-- openclaw-skill
+## How to Use / Core Instructions
+1. Primero piensa en alcance, riesgo y coste.
+2. Luego valida inputs y dependencias mínimas.
+3. Ejecuta en pasos pequeños y reversibles.
+4. Verifica resultado con checks explícitos.
+5. Si hay error, falla seguro y reporta causa + próximo paso.
 
-## Execution contract
-1. Validate request and constraints.
-2. Generate minimal safe plan.
-3. Execute in reversible steps.
-4. Verify with explicit checks.
-5. Return concise summary + next actions.
+## Security & Safety Guidelines
+Nunca ejecutes código sospechoso sin sandbox. Reporta riesgos al usuario. No envíes datos sensibles fuera del entorno local.
 
-## Inputs expected
-- Goal
-- Constraints (time/cost/privacy)
-- Optional files/URLs
+## Tools Required
+- fs_read
+- fs_write
+- shell_exec
+- memory_search
 
-## Outputs
-- Plan
-- Actions executed
-- Verification results
-- Rollback notes
+## Example Flows
+- Entrada -> validación -> plan -> ejecución -> verificación -> reporte.
+- Reintento controlado con rollback si falla.
 
-## Guardrails
-- Never expose secrets.
-- No destructive operation without explicit confirmation.
-- Fail safe with actionable diagnostics.
-
-## Commands
-```bash
-# Placeholder entrypoint
-printf "phoenix-reborn: validate -> execute -> verify\n"
-```
-
-## Test checklist
-- [ ] Happy path
-- [ ] Error handling
-- [ ] Idempotency
-- [ ] Guardrails respected
+## Edge Cases & Error Handling
+- Input incompleto: pedir datos mínimos.
+- Dependencia ausente: degradar en modo seguro.
+- Error persistente: detener, registrar y escalar.
