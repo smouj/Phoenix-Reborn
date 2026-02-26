@@ -1,68 +1,59 @@
 ---
 name: phoenix-reborn
-description: "Auto-resurrección y evolución post-fallo."
+description: "🔄 Auto-resurrección y evolución post-fallo."
 metadata:
   {
     "openclaw": {
       "emoji": "🔄",
-      "version": "0.1.0",
-      "author": "smouj"
+      "version": "0.2.0",
+      "author": "smouj",
+      "lang_default": "en"
     }
   }
 ---
 
-# Phoenix Reborn
+# 🔄 Phoenix Reborn
 
 ## Purpose
-Sistema de auto-recuperación que detecta fallos en la ejecución de skills, analiza causas raíz mediante meta-learning ligero y propone/ejecuta retries con estrategia mejorada.
+Sistema de auto-recuperación que detecta fallos en la ejecución de skills, analiza causas raíz mediante meta-learning ligero y ejecuta retries con estrategia mejorada.
 
-## Scope
-- Execute this skill when tasks match this domain.
-- Keep actions measurable and reversible.
-- Prefer local-first execution and minimal permissions.
+## Tags
+- security
+- reliability
+- automation
+- openclaw-skill
+
+## Execution contract
+1. Validate request and constraints.
+2. Generate minimal safe plan.
+3. Execute in reversible steps.
+4. Verify with explicit checks.
+5. Return concise summary + next actions.
 
 ## Inputs expected
-- Goal/intention in plain language
-- Optional constraints (time/cost/privacy)
-- Optional files/URLs needed for context
+- Goal
+- Constraints (time/cost/privacy)
+- Optional files/URLs
 
 ## Outputs
-- Brief execution plan
-- Step-by-step actions performed
-- Verification checks
-- Rollback/recovery notes
-
-## Standard workflow
-1. Validate scope and constraints.
-2. Build a minimal execution plan.
-3. Execute in small safe steps.
-4. Verify results with explicit checks.
-5. Summarize outcome + next steps.
-
-## Commands (reference)
-```bash
-# validation stub
-printf "running phoenix-reborn checks...
-"
-
-# add project-specific command here
-# ./scripts/phoenix-reborn.sh
-```
+- Plan
+- Actions executed
+- Verification results
+- Rollback notes
 
 ## Guardrails
-- Never expose secrets in logs or outputs.
-- Avoid destructive actions without explicit confirmation.
-- Fail safely and report actionable diagnostics.
+- Never expose secrets.
+- No destructive operation without explicit confirmation.
+- Fail safe with actionable diagnostics.
 
-## Installation notes
-- No external dependency is required for the documentation skeleton.
-- Add dependencies in this section when implementation starts.
+## Commands
+```bash
+# Placeholder entrypoint
+printf "phoenix-reborn: validate -> execute -> verify\n"
+```
 
 ## Test checklist
-- [ ] Happy path validated
-- [ ] Error path validated
-- [ ] Idempotency checked
-- [ ] Security constraints verified
-
-## Changelog
-- 0.1.0: Initial structure, purpose, workflow and guardrails.
+- [ ] Happy path
+- [ ] Error handling
+- [ ] Idempotency
+- [ ] Guardrails respected
