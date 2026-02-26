@@ -1,36 +1,68 @@
-# 🔄 Phoenix Reborn
+# Phoenix Reborn
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Skill-Phoenix%20Reborn-111827?style=for-the-badge&logo=github" alt="Phoenix Reborn banner" />
-</p>
+[![Language: English](https://img.shields.io/badge/Language-English-blue.svg)](README.md)
+[![Idioma: Español](https://img.shields.io/badge/Idioma-Espa%C3%B1ol-green.svg)](README.es.md)
 
-<p align="center">
-  <a href="./README.md"><img src="https://img.shields.io/badge/README-English-1f6feb?style=for-the-badge" alt="English"></a>
-  <a href="./README.es.md"><img src="https://img.shields.io/badge/README-Español-c92a2a?style=for-the-badge" alt="Español"></a>
-</p>
+Skill especializada para operaciones de **reliability** en entornos multiagente (OpenClaw/KiloCode).
 
-## Resumen
-Auto-resurrección y evolución: si el agente falla/crash/olvida contexto crítico, revive de backups locales + analiza logs de fallos para mutar su propio prompt base y skills (meta-learning ligero). Evita loops de muerte repetida en tareas largas.
+## Descripción general
 
-## Instalación
-```bash
-git clone https://github.com/smouj/Phoenix-Reborn.git
-cd Phoenix-Reborn
-cat SKILL.es.md
-```
+Phoenix Reborn permite ejecutar tareas de reliability con un flujo seguro, reproducible y trazable.
 
-## Arquitectura de entendimiento
-```mermaid
-flowchart LR
-  A[Entrada] --> B[Validar alcance]
-  B --> C[Plan seguro]
-  C --> D[Ejecutar]
-  D --> E[Verificar]
-  E --> F[Reportar]
-```
+## Cuándo usar
 
-## Estado
-Iniciando
+- Necesitas ejecución estructurada en el dominio **reliability**.
+- Quieres resultados reproducibles (plan, verificación y rollback).
+- Necesitas guardrails explícitos de seguridad y control del operador.
 
-## Dificultad
-Alta
+## Capacidades principales
+
+- Activación por triggers para escenarios de reliability.
+- Flujo de 4 pasos (análisis, planificación, ejecución, validación).
+- Formato de salida estandarizado para operación y reporte.
+- Guardrails security-first.
+
+## Entradas
+
+- Objetivo y alcance
+- Entorno/contexto (repo, VPS, servicio, etc.)
+- Restricciones y tolerancia al riesgo
+
+## Salidas
+
+- Resumen operativo
+- Plan aplicado
+- Cambios realizados
+- Evidencia de verificación
+- Pasos de rollback
+- Riesgo residual
+
+## Archivos
+
+- `SKILL.md` → Especificación en inglés
+- `SKILL.es.md` → Especificación en español
+- `README.md` → Documentación en inglés
+- `README.es.md` → Documentación en español
+
+## Límites y guardrails
+
+- Nunca exponer secretos.
+- Nunca ejecutar acciones destructivas sin confirmación explícita.
+- Preferir cambios mínimos y reversibles.
+
+## Troubleshooting
+
+1. Verificar acceso a herramientas/autenticación.
+2. Revalidar alcance y conectividad del entorno.
+3. Reducir a cambio mínimo seguro.
+4. Reintentar con comandos de verificación explícitos.
+
+## Ejemplo rápido
+
+**Input:** "Audita y mejora el flujo de reliability."
+
+**Salida esperada:**
+- Alcance + plan
+- Ejecución segura
+- Comandos de verificación
+- Procedimiento de rollback
