@@ -2,7 +2,7 @@
 name: phoenix-reborn
 description: >
   Phoenix Reborn skill for reliability operations in multi-agent ecosystems. Use when tasks require reliability analysis, automation, and safe execution workflows.
-version: "1.0.0"
+version: "1.0.1"
 tags: [reliability, ai-agents, openclaw]
 metadata:
   author: smouj
